@@ -14,9 +14,9 @@
 var _date = document.getElementById('date');
 
 	var datePicker = new DatePicker({
-		confirmCbk: function(data) {
-            _date.value = data.year + '-' + data.month + '-' + data.day;
-		}
+            confirmCbk: function(data) {
+                _date.value = data.year + '-' + data.month + '-' + data.day;
+            }
 	});
 
     _date.onfocus = function(e) {

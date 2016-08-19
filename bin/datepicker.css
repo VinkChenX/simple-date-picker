@@ -89,6 +89,9 @@
   text-align: center;
   color: #4eccc4;
 }
+.datepicker__time-selector-arrow.disabled {
+  color: #ccc;
+}
 .datepicker__time-selector-next {
   right: 0;
 }

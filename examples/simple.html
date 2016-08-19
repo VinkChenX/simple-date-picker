@@ -1,41 +1,64 @@
 <html>
-<head>
-	<title>date_picker</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="no"/>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="format-detection" content="email=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <style type="text/css">
-		* {
-			margin: 0;
-			padding: 0;
+    <head>
+        <title>date_picker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="no"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="email=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #date {
+                margin-top: 20px;
+                width: 100px;
+                height: 35px;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="./../bin/datepicker.css">
+    </head>
+    <body>
+        <input type="text" id="date">
+    </body>
+    <script type="text/javascript" src="./zepto.min.js"></script>
+    <script type="text/javascript" src="./../bin/datepicker.js"></script>
+    <script type="text/javascript">
+        var _date = document.getElementById('date');
+        var datePicker = new window.DatePicker({
+            minDate:new Date('2015-12-31 GMT+0800'),//为防止时区混乱 需要指定时区
+            maxDate:new Date('2017-1-1 GMT+0800'),//为防止时区混乱 需要指定时区
+            /*genDaysOfMonthHtml:function(dayList, year, month, context) {//自定义日期显示
+                var htmlArr = [],
+			base    = 'datepicker__day-item ',
+			gray    = 'datepicker__day-item_gray',
+			active  = 'datepicker__day-item_active',
+			_class   = '',
+			temp    = '';
+                var listLength = dayList.length;
+		for ( var i = 0, il = listLength; i < il;i++ ) {
+                    var hasGray = dayList[i].gray || context._dateDisabled(year, month, dayList[i].num);
+			_class = (   hasGray
+					 ? base + gray
+					 : base  );
+			_class = ( dayList[i].active && !hasGray
+				      ? _class + active
+				      : _class  );
+			temp = '<li class="' + _class + '"><div>' + dayList[i].num + '</div><div>放假</div></li>';
+			htmlArr.push(temp);
 		}
-		#date {
-			margin-top: 20px;
-			width: 100px;
-			height: 35px;
-		}
-    </style>
-    <link rel="stylesheet" type="text/css" href="./../bin/datepicker.css">
-</head>
-<body>
-	<input type="text" id="date">
-</body>
-<script type="text/javascript" src="./zepto.min.js"></script>
-<script type="text/javascript" src="./../bin/datepicker.js"></script>
-<script type="text/javascript">
-    var _date = document.getElementById('date');
 
-	var datePicker = new window.DatePicker({
-		confirmCbk: function(data) {
-            _date.value = data.year + '-' + data.month + '-' + data.day;
-		}
-	});
+		return htmlArr;
+            },*/
+            confirmCbk: function (data) {
+                _date.value = data.year + '-' + data.month + '-' + data.day;
+            }
+        });
 
-    _date.onfocus = function(e) {
-    	_date.blur();
-		datePicker.open();
-    };
-</script>
+        _date.onfocus = function (e) {
+            _date.blur();
+            datePicker.open();
+        };
+    </script>
 </html>
